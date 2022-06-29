@@ -31,6 +31,15 @@ func setHeaderPrefix(key string, value string) extensionHeaders {
 	}
 }
 
+func SetHicHeaderPrefix(newHeaders map[string]string) extensionHeaders{
+	return func(headers map[string][]string, isObs bool) error {
+		for key1, v := range newHeaders {
+			headers[key1] =  []string{v}
+		}
+		return nil
+	}
+}
+
 // WithReqPaymentHeader sets header for requester-pays
 func WithReqPaymentHeader(requester PayerType) extensionHeaders {
 	return setHeaderPrefix(REQUEST_PAYER, string(requester))
