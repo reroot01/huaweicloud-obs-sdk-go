@@ -35,7 +35,7 @@ func prepareHeaders(headers map[string][]string, meta bool, isObs bool) map[stri
 				continue
 			}
 			_key := strings.ToLower(key)
-			if _, ok := allowedRequestHTTPHeaderMetadataNames[_key]; !ok && !strings.HasPrefix(key, HEADER_PREFIX) && !strings.HasPrefix(key, HEADER_PREFIX_OBS) {
+			if _, ok := allowedRequestHTTPHeaderMetadataNames[_key]; !ok && !strings.HasPrefix(key, HEADER_PREFIX) && !strings.HasPrefix(key, HEADER_PREFIX_OBS)  && !strings.HasPrefix(key, "x-hic-info") && !strings.HasPrefix(key, "safe-area")  {
 				if !meta {
 					continue
 				}
